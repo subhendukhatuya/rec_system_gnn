@@ -1,1 +1,1 @@
-Socail Recommendation System
+Social Recommendation System

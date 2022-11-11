@@ -23,9 +23,7 @@ from torch.utils.data import Dataset, DataLoader
 rating_info = loadmat('./data/epinions/rating.mat')['rating']
 trust_info = loadmat('./data/epinions/trustnetwork.mat')['trustnetwork']
 
-rating_info
 
-trust_info
 
 rating_list = []
 trust_list = []
@@ -52,9 +50,6 @@ pos_list = []
 for x in rating_list:
 	pos_list.append((x[0], x[1], x[2]))
 
-user_count, item_count, rate_count
-
-pos_list[0]
 
 """## Prepare train, valid, test split of data"""
 
@@ -80,11 +75,6 @@ test_df = pd.DataFrame(test_set, columns = ['uid', 'iid', 'label'])
 click_df = pd.DataFrame(rating_list, columns = ['uid', 'iid', 'label'])
 train_df = train_df.sort_values(axis = 0, ascending = True, by = 'uid')
 
-train_df
-
-max(train_df['label'].values.tolist())
-
-min(train_df['label'].values.tolist())
 
 """## Prepare user-item list
 
@@ -112,7 +102,6 @@ for item in tqdm(range(item_count + 1)):
     else:
         i_users_list.append([(uid, rating) for uid, rating in zip(item_users, item_ratings)])
 
-i_users_list[2]
 
 """## Process trust info"""
 
@@ -126,7 +115,7 @@ for x in trust_info:
 trust_df = pd.DataFrame(trust_list, columns = ['uid', 'fid'])
 trust_df = trust_df.sort_values(axis = 0, ascending = True, by = 'uid')
 
-trust_df
+
 
 for user in tqdm(range(user_count + 1)):
     user_df = trust_df[trust_df['uid'] == user]
